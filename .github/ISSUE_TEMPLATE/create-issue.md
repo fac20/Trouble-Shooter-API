@@ -1,13 +1,10 @@
 ---
 name: Create issue
 about: For creating issues
-title: ''
+title: "[FOLDER] - [FILENAME]"
 labels: ''
 assignees: ''
 
 ---
-
-**Folder**: 
-**File name**:
 
 **Suggested next action**:
