@@ -15,7 +15,7 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE prompts (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY, -- may need to add prompt_no to track prompts within categories
     cat_id INTEGER REFERENCES categories(id),
     prompt TEXT NOT NULL,
     route_one_txt VARCHAR(255),
@@ -38,6 +38,7 @@ INSERT INTO prompts (cat_id, prompt, route_one_txt, route_one, route_two_txt, ro
     (1,'Are you in the right dir', 'yes', 3, 'no', 5), --2
     (1,'do you see modules', 'yes', null , 'no', null),  --3
     (1,'run npm init',null,null,null,null),
+    (1,'nav to dir',null,1,null,null),
     (1,'nav to dir',null,1,null,null)
 ; --5
 
