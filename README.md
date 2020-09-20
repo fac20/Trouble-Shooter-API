@@ -6,7 +6,7 @@
 
 ## Contributing to this project
 ### Familiarising with the project
-- Check out open issues and In Progress in the project board
+- Check out open issues and 'In Progress in the project board
 
 ### Set up
 - Clone this repo to your machine
