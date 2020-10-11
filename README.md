@@ -1,12 +1,27 @@
-# Trouble Shooter API
+
+<h1 style="text-align: center; font-weight:800;
+  background: -webkit-linear-gradient( rgba(231,59,100,1) 0%, rgba(132,151,231,1) 35%, rgba(175,241,126,1) 100%);
+   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  drop-shadow: -24px 27px 25px -4px rgba(30, 30, 60, 0.27);">Trouble Shooter API</h1>
+
 ## About this API
-- background
-- how it works - link to "using the API"
-- tech stack
+
+### Background
+### How it works - link to "using the API"
+### Tech stack
+- Postgres
+- Express
+- Eslint
+- Prettier
+- Cypress
+- Github Actions/ Circle CI
+- 
+
 
 ## Contributing to this project
 ### Familiarising with the project
-- Check out open issues and 'In Progress in the project board
+- Check out open issues and 'In Progress in the (project board)[link to jira board]
 
 ### Set up
 - Clone this repo to your machine
@@ -80,3 +95,5 @@ Base URL: https://trouble-shooting.heroku.com
 ```
 
 - FAQ
+
+ - Code of Conduct?
