@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS categories, prompts, users;
+DROP TABLE IF EXISTS users, categories, prompts;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -30,7 +30,7 @@ INSERT INTO users (username, password) VALUES
 ;
 
 INSERT INTO categories (cat_name, user_id) VALUES 
-    ('npm', 1)
+    ('npm isnt running', 1)
 ;
     
 INSERT INTO prompts (cat_id, prompt, route_one_txt, route_one, route_two_txt, route_two) VALUES

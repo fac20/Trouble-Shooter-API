@@ -1,5 +1,5 @@
 const dotenv = require('dotenv').config();
-const pg = require('pg');
+const pgPromise = require('pg-promise');
 
 let databaseUrl = process.env.PROD_DB_URL;
 let options = {};
@@ -14,6 +14,6 @@ if (process.env.NODE_ENV === 'test') {
 	};
 }
 
-const db = new pg.Pool(options);
+const db = new pgPromise.Pool(options);
 
 module.exports = db;

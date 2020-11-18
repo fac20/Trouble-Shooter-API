@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS categories, prompts, users;
+DROP TABLE IF EXISTS users, categories, prompts;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
