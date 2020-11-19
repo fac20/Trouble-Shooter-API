@@ -1,8 +1,7 @@
 const { UserType, CategoryType, PromptType } = require('./types');
 const { GraphQLObjectType, GraphQLID } = require('graphql');
 const db = require('../database/connection');
-
-export const RootQuery = new GraphQLObjectType({
+const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	type: 'Query',
 	fields: {
@@ -10,7 +9,7 @@ export const RootQuery = new GraphQLObjectType({
 			type: UserType,
 			args: { id: { type: GraphQLID } },
 			resolve(parentValue, args) {
-				const query = `SELECT * FROM USERS where id=$1`;
+				const query = `SELECT * FROM users WHERE id=$1`;
 				const values = [args.id];
 
 				return db
@@ -21,3 +20,5 @@ export const RootQuery = new GraphQLObjectType({
 		},
 	},
 });
+module.exports = { RootQuery };
+// exports.query = RootQuery;

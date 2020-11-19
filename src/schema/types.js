@@ -8,27 +8,30 @@ const {
 	GraphQLList,
 } = graphql;
 
-export const UserType = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
 	name: 'User',
-	fields: () => ({
+	type: 'Query',
+	fields: {
 		id: { type: GraphQLID },
 		username: { type: GraphQLString },
 		password: { type: GraphQLString },
-	}),
+	},
 });
 
-export const CategoryType = new GraphQLObjectType({
+const CategoryType = new GraphQLObjectType({
 	name: 'Category',
-	fields: () => ({
+	type: 'Query',
+	fields: {
 		id: { type: GraphQLID },
 		cat_name: { type: GraphQLString },
 		user_id: { type: GraphQLInt },
-	}),
+	},
 });
 
-export const PromptType = new GraphQLObjectType({
+const PromptType = new GraphQLObjectType({
 	name: 'Prompt',
-	fields: () => ({
+	type: 'Query',
+	fields: {
 		id: { type: GraphQLID },
 		cat_id: { type: GraphQLInt },
 		prompt: { type: GraphQLString },
@@ -36,5 +39,7 @@ export const PromptType = new GraphQLObjectType({
 		route_one: { type: GraphQLInt },
 		route_two_txt: { type: GraphQLString },
 		route_two: { type: GraphQLInt },
-	}),
+	},
 });
+
+module.exports = { UserType, CategoryType, PromptType };
