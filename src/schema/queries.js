@@ -1,5 +1,5 @@
 const { UserType, CategoryType, PromptType } = require('./types');
-const { GraphQLObjectType, GraphQLID } = require('graphql');
+const { GraphQLObjectType, GraphQLID, GraphQLList } = require('graphql');
 const db = require('../database/connection');
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
@@ -31,6 +31,18 @@ const RootQuery = new GraphQLObjectType({
 					.catch((err) => err);
 			},
 		},
+		categoryList: {
+			type: new GraphQLList(CategoryType),
+			args: {},
+			resolve(parentValue, args) {
+				const query = 'SELECT * FROM categories';
+
+				return db
+					.any(query)
+					.then((res) => res)
+					.catch((err) => err);
+			},
+		},
 		// prompt: {
 
 		// }
@@ -38,3 +50,10 @@ const RootQuery = new GraphQLObjectType({
 });
 module.exports = { RootQuery };
 // exports.query = RootQuery;
+
+// db.any(query, values).then((data) => {
+// 	data.forEach((row, index, data) => {
+// 		// process the row
+// 	});
+// 	return data;
+// });
