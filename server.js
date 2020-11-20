@@ -6,7 +6,7 @@ const { GraphQLSchema } = graphql;
 const app = express();
 
 const schema = new GraphQLSchema({
-	RootQuery,
+	query: RootQuery,
 });
 console.log('schema ======', schema);
 app.use(
