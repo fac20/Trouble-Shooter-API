@@ -17,6 +17,7 @@ CREATE TABLE categories (
 CREATE TABLE prompts (
     id SERIAL PRIMARY KEY,
     cat_id INTEGER REFERENCES categories(id),
+    prompt_id INTEGER,
     prompt TEXT NOT NULL,
     route_one_txt VARCHAR(255),
     route_one INTEGER,
