@@ -1,5 +1,10 @@
 const { UserType, CategoryType, PromptType } = require('./types');
-const { GraphQLObjectType, GraphQLID, GraphQLList } = require('graphql');
+const {
+	GraphQLObjectType,
+	GraphQLID,
+	GraphQLList,
+	GraphQLInt,
+} = require('graphql');
 const db = require('../database/connection');
 const RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
@@ -18,15 +23,15 @@ const RootQuery = new GraphQLObjectType({
 					.catch((err) => err);
 			},
 		},
-		category: {
-			type: CategoryType,
-			args: { id: { type: GraphQLID } },
+		prompt: {
+			type: new GraphQLList(PromptType),
+			args: { cat_id: { type: GraphQLInt } }, // is will be cat_id
 			resolve(parentValue, args) {
-				const query = 'SELECT * FROM categories WHERE id=$1';
-				const values = [args.id];
+				const query = 'SELECT * FROM prompts WHERE cat_id=$1';
+				const values = [args.cat_id];
 
 				return db
-					.one(query, values)
+					.any(query, values)
 					.then((res) => res)
 					.catch((err) => err);
 			},
