@@ -10,8 +10,8 @@ const {
 const { UserType, PromptType, CategoryType } = require('./types');
 
 const RootMutation = new GraphQLObjectType({
-	name: 'rootMutationType',
-	type: 'mutation',
+	name: 'RootMutationType',
+	type: 'Mutation',
 	fields: {
 		addCategory: {
 			type: CategoryType,
@@ -21,7 +21,7 @@ const RootMutation = new GraphQLObjectType({
 				user_id: { type: GraphQLInt },
 			},
 			resolve(parentValue, args) {
-				const query = `INSERT INTO categories(cat_name, user_id) VALUES ($1, $2)`;
+				const query = `INSERT INTO categories(cat_name, user_id) VALUES ($1, $2) RETURNING  cat_name`;
 				const values = [args.cat_name, args.user_id];
 
 				return db
@@ -33,4 +33,4 @@ const RootMutation = new GraphQLObjectType({
 	},
 });
 
-module.export = { RootMutation };
+module.exports = { RootMutation };
