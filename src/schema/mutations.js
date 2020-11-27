@@ -47,6 +47,36 @@ const RootMutation = new GraphQLObjectType({
 					.catch((err) => err);
 			},
 		},
+
+		addPrompt: {
+			type: PromptType,
+			args: {
+				cat_id: { type: GraphQLInt },
+				prompt_id: { type: GraphQLInt },
+				prompt: { type: GraphQLString },
+				route_one_txt: { type: GraphQLString },
+				route_one: { type: GraphQLInt },
+				route_two_txt: { type: GraphQLString },
+				route_two: { type: GraphQLInt },
+			},
+			resolve(parentValue, args) {
+				const query = `INSERT INTO prompts (cat_id, prompt_id, prompt, route_one_txt, route_one, route_two_txt, route_two) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING cat_id, prompt_id, prompt, route_one_txt, route_one, route_two_txt, route_two`;
+				const values = [
+					args.cat_id,
+					args.prompt_id,
+					args.prompt,
+					args.route_one_txt,
+					args.route_one,
+					args.route_two_txt,
+					args.route_two,
+				];
+
+				return db
+					.one(query, values)
+					.then((res) => res)
+					.catch((err) => err);
+			},
+		},
 	},
 });
 
