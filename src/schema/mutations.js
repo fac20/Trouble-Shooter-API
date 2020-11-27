@@ -30,6 +30,23 @@ const RootMutation = new GraphQLObjectType({
 					.catch((err) => err);
 			},
 		},
+		addUser: {
+			type: UserType,
+			args: {
+				id: { type: GraphQLID },
+				username: { type: GraphQLString },
+				password: { type: GraphQLString },
+			},
+			resolve(parentValue, args) {
+				const query = `INSERT INTO users(username, password) VALUES ($1, $2) RETURNING username`;
+				const values = [args.username, args.password];
+
+				return db
+					.one(query, values)
+					.then((res) => res)
+					.catch((err) => err);
+			},
+		},
 	},
 });
 
